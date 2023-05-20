@@ -28,3 +28,4 @@ Este é um projeto em aberto para estudo, portanto, sinta-se à vontade para con
 
 Aviso
 Este projeto está atualmente em desenvolvimento e pode não funcionar perfeitamente. Esteja ciente disso ao usar o aplicativo.
+```

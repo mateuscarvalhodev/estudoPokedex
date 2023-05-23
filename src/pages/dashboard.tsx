@@ -18,6 +18,7 @@ const Dashboard = () => {
   const [page, setPage] = useState(0);
   const [isDisableNext, setIsDisableNext] = useState(false);
   const [isDisablePrevious, setIsDisablePrevious] = useState(true);
+  let data = [];
 
   useEffect(() => {
     api.get('/pokemon', {
@@ -27,29 +28,17 @@ const Dashboard = () => {
       }
     }).then((response) => {
 
-      console.log(response);
+      
       const { next, previous, results } = response.data;
-      console.log(next, previous);
       setIsDisableNext(!next);
       setIsDisablePrevious(!previous);
       setPokemon(results);
-
+      console.log(results);     
+      
     })
   }, [page]);
 
-  useEffect(() => {
-    const loadPokemonInfo = async () => {
-      const loadedPokemonInfo = await Promise.all(
-        pokemon.map((p: { name: string, url?: string }) =>
-          api.get(`pokemon/${p.name}`)
-        )
-      );
-      setPokemonInfo(loadedPokemonInfo.map((response) => response.data));
-    };
-
-    loadPokemonInfo();
-  }, [pokemon]);
-  console.log(pokemonInfo);
+ 
   return (
     <>
       <div className='flex flex-wrap flex-row gap-4 justify-center p-4'>
@@ -59,7 +48,7 @@ const Dashboard = () => {
               key={item.index}
               name={item.name}
               index={item.index}
-              // image={item.sprites.front_default}
+              // image={item.sprites.front_default} 
               types={item.types}
             // image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${(page * 20) + (index + 1)}.png`}
             />

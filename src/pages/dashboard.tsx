@@ -14,11 +14,10 @@ const Dashboard = () => {
 
 
   const [pokemon, setPokemon] = useState([]);
-  const [pokemonInfo, setPokemonInfo] = useState([]);
   const [page, setPage] = useState(0);
   const [isDisableNext, setIsDisableNext] = useState(false);
   const [isDisablePrevious, setIsDisablePrevious] = useState(true);
-  let data = [];
+
 
   useEffect(() => {
     api.get('/pokemon', {
@@ -28,17 +27,19 @@ const Dashboard = () => {
       }
     }).then((response) => {
 
-      
+
       const { next, previous, results } = response.data;
       setIsDisableNext(!next);
       setIsDisablePrevious(!previous);
       setPokemon(results);
-      console.log(results);     
-      
+      console.log(results);
+
     })
   }, [page]);
 
- 
+
+
+
   return (
     <>
       <div className='flex flex-wrap flex-row gap-4 justify-center p-4'>
@@ -50,7 +51,7 @@ const Dashboard = () => {
               index={item.index}
               // image={item.sprites.front_default} 
               types={item.types}
-            // image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${(page * 20) + (index + 1)}.png`}
+              image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${(page * 20) + (index + 1)}.png`}
             />
           )
         }

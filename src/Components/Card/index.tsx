@@ -2,11 +2,10 @@
 // eslint-disable-next-line @next/next/no-img-element
 import Image from "next/image";
 import { ReactElement } from "react";
-import { IPokemons } from "@/pages/dashboard";
+// import { IPokemons } from "@/pages/dashboard";
 
-
-
-const Card = ({ name, image, index, types }: IPokemons): ReactElement => {
+// const Card = ({ name, image, index, types }: IPokemons): ReactElement => {
+const Card = ({ name, image, index, types }: any) => {
   return (
     <>
       <div className="border-solid border-2 border-sky-500 max-w-sm rounded overflow-hidden shadow-lg">
